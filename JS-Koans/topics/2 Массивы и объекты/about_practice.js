@@ -34,7 +34,8 @@ describe("About Applying What We Have Learnt (about_applying_what_we_have_learnt
       }
     }
 
-    expect(productsICanEat.length).toBe(FILL_ME_IN);
+    // Only "Pizza Primavera" fits the criteria (no nuts and no mushrooms)
+    expect(productsICanEat.length).toBe(1);
   });
 
   it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (imperative)", function () {
@@ -46,12 +47,13 @@ describe("About Applying What We Have Learnt (about_applying_what_we_have_learnt
       }
     }
 
-    expect(sum).toBe(FILL_ME_IN);
+    // Sum of all multiples of 3 or 5 below 1000 is 233168
+    expect(sum).toBe(233168);
   });
 
   /*********************************************************************************/
    it("should count the ingredient occurrence (imperative)", function () {
-    let ingredientCount = { "{ingredient name}": 0 };
+    let ingredientCount = {};
 
     for (let i = 0; i < products.length; i+=1) {
       for (let j = 0; j < products[i].ingredients.length; j += 1) {
@@ -59,6 +61,7 @@ describe("About Applying What We Have Learnt (about_applying_what_we_have_learnt
       }
     }
 
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    // "mushrooms" appear in "Sonoma" and "South Of The Border", total 2 times
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 });

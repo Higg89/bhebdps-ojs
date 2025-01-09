@@ -6,7 +6,8 @@ describe("About Functions (about_functions.js)", function() {
       return a + b;
     }
 
-    expect(add(1, 2)).toBe(FILL_ME_IN);
+    // 1 + 2 = 3
+    expect(add(1, 2)).toBe(3);
   });
 
   it("should know internal variables override outer variables", function () {
@@ -21,9 +22,12 @@ describe("About Functions (about_functions.js)", function() {
       return message;
     }
 
-    expect(getMessage()).toBe(FILL_ME_IN);
-    expect(overrideMessage()).toBe(FILL_ME_IN);
-    expect(message).toBe(FILL_ME_IN);
+    // Внешнее значение message = "Outer"
+    expect(getMessage()).toBe("Outer");
+    // Локальная переменная message внутри функции = "Inner"
+    expect(overrideMessage()).toBe("Inner");
+    // Внешнее значение message не изменено = "Outer"
+    expect(message).toBe("Outer");
   });
 
   it("should have lexical scoping", function () {
@@ -31,11 +35,12 @@ describe("About Functions (about_functions.js)", function() {
     function parentfunction() {
       let variable = "local";
       function childfunction() {
-        return variable;
+        return variable; // Возвращает локальную переменную из parentfunction
       }
       return childfunction();
     }
-    expect(parentfunction()).toBe(FILL_ME_IN);
+    // Лексическое окружение возвращает "local"
+    expect(parentfunction()).toBe("local");
   });
 
   it("should use lexical scoping to synthesise functions", function () {
@@ -50,29 +55,32 @@ describe("About Functions (about_functions.js)", function() {
     let mysteryFunction3 = makeMysteryFunction(3);
     let mysteryFunction5 = makeMysteryFunction(5);
 
-    expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(FILL_ME_IN);
+    // mysteryFunction3(10) = 3 + 10 = 13
+    // mysteryFunction5(5) = 5 + 5 = 10
+    expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(23);
   });
 
   it("should allow extra function arguments", function () {
 
     function returnFirstArg(firstArg) {
-      return firstArg;
+      return firstArg; // Возвращает только первый аргумент
     }
 
-    expect(returnFirstArg("first", "second", "third")).toBe(FILL_ME_IN);
+    expect(returnFirstArg("first", "second", "third")).toBe("first");
 
     function returnSecondArg(firstArg, secondArg) {
-      return secondArg;
+      return secondArg; // Возвращает второй аргумент
     }
 
-    expect(returnSecondArg("only give first arg")).toBe(FILL_ME_IN);
+    // Если передан только один аргумент, второй будет undefined
+    expect(returnSecondArg("only give first arg")).toBe(undefined);
 
     function returnAllArgs() {
       let argsArray = [];
       for (let i = 0; i < arguments.length; i += 1) {
-        argsArray.push(arguments[i]);
+        argsArray.push(arguments[i]); // Собирает все аргументы в массив
       }
-      return argsArray.join(",");
+      return argsArray.join(","); // Соединяет их в строку через запятую
     }
 
     expect(returnAllArgs("first", "second", "third")).toBe("first,second,third");
@@ -89,10 +97,12 @@ describe("About Functions (about_functions.js)", function() {
     };
 
     let praiseSinger = { givePraise: appendRules };
-    expect(praiseSinger.givePraise("John")).toBe(FILL_ME_IN);
+    // praiseSinger.givePraise = appendRules
+    expect(praiseSinger.givePraise("John")).toBe("John rules!");
 
     praiseSinger.givePraise = appendDoubleRules;
-    expect(praiseSinger.givePraise("Mary")).toBe(FILL_ME_IN);
+    // praiseSinger.givePraise = appendDoubleRules
+    expect(praiseSinger.givePraise("Mary")).toBe("Mary totally rules!");
 
   });
 });

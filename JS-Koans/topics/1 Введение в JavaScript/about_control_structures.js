@@ -5,7 +5,7 @@ describe("About Control Structures (about_control_structures.js)", function(){
       isPositive = true;
     }
 
-    // what is the value of isPositive?
+    // The value of isPositive is true because the condition 2 > 0 is true.
     expect(true).toBe(isPositive);
   });
 
@@ -15,32 +15,32 @@ describe("About Control Structures (about_control_structures.js)", function(){
       counter = counter + i;
     }
 
-    // what is the value of counter?
+    // Counter starts at 10, and the loop adds 1, 2, and 3, resulting in 16.
     expect(16).toBe(counter);
   });
 
   it("for in", function() {
-    // this syntax will be explained in about objects
     let person = {
       name: "Amory Blaine",
       age: 102
     };
     let result = "";
-    // for in enumerates the property names of an object
     for (let property_name in person) {
         result = result + property_name;
     }
 
-    // what is the value of result?
+    // The property names of the object are "name" and "age", concatenated to "nameage".
     expect("nameage").toBe(result);
   });
 
   it("ternary operator", function() {
     let fruit = true ? "apple" : "orange";
-      expect("apple").toBe(fruit, 'what is the value of fruit?');
+    // When true, the result is "apple".
+    expect("apple").toBe(fruit);
 
     fruit = false ? "apple" : "orange";
-      expect("orange").toBe(fruit, 'now what is the value of fruit?');
+    // When false, the result is "orange".
+    expect("orange").toBe(fruit);
   });
 
   it("switch", function() {
@@ -54,8 +54,8 @@ describe("About Control Structures (about_control_structures.js)", function(){
         break;
     }
 
-    // what is the value of result?
-      expect(2).toBe(result);
+    // The switch matches case 1+1 (which equals 2), so result is set to 2.
+    expect(2).toBe(result);
   });
 
   it("switch default case", function() {
@@ -72,14 +72,14 @@ describe("About Control Structures (about_control_structures.js)", function(){
         break;
     }
 
-    // what is the value of result?
-      expect("Merry").toBe(result);
+    // The default case is executed, setting result to "Merry".
+    expect("Merry").toBe(result);
   });
 
   it("null coalescing", function() {
     let result = null || "a value";
 
-    // what is the value of result?
-      expect("a value").toBe(result);
+    // When null is used with ||, the second value ("a value") is returned.
+    expect("a value").toBe(result);
   });
 });

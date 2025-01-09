@@ -1,39 +1,36 @@
-
 describe("About Objects (about_objects.js)", function() {
   it("object type", function() {
     let emptyObject = {};
-    // what is the type of an object?
-    expect(FILL_ME_IN).toBe(typeof(emptyObject));
+    // The type of an object is "object".
+    expect("object").toBe(typeof(emptyObject));
   });
 
   it("object literal notation", function() {
     let person = {
-      FILL_ME_IN: FILL_ME_IN,
-      FILL_ME_IN: FILL_ME_IN
+      name: "Amory Blaine",
+      age: 102
     };
-    // what is the person's name?
+    // The person's name is "Amory Blaine".
     expect("Amory Blaine").toBe(person.name);
-    // what is the person's age?
+    // The person's age is 102.
     expect(102).toBe(person.age);
   });
 
   it("dynamically adding properties", function() {
     let person = {};
-    person.FILL_ME_IN = "Amory Blaine";
-    person.FILL_ME_IN = 102;
-    // what is the person's name?
+    person.name = "Amory Blaine";
+    person.age = 102;
+    // The dynamically added properties should match the expected values.
     expect("Amory Blaine").toBe(person.name);
-    // what is the person's age?
     expect(102).toBe(person.age);
-  }); 
+  });
 
   it("adding properties from strings", function() {
     let person = {};
-    person["FILL_ME_IN"] = "Amory Blaine";
-    person["FILL_ME_IN"] = 102;
-    // what is the person's name?
+    person["name"] = "Amory Blaine";
+    person["age"] = 102;
+    // The properties added using string keys should match the expected values.
     expect("Amory Blaine").toBe(person.name);
-    // what is the person's age?
     expect(102).toBe(person.age);
   });
 
@@ -42,10 +39,10 @@ describe("About Objects (about_objects.js)", function() {
       name: "Amory Blaine",
       age: 102,
       toString: function() {
-        return FILL_ME_IN;  // HINT: use the 'this' keyword to refer to the person object.
+        return `I ${this.name} am ${this.age} years old.`; // Use 'this' to refer to the object.
       }
     };
-    // what should the toString function be?
+    // The toString function should return the expected string.
     expect("I Amory Blaine am 102 years old.").toBe(person.toString());
   });
 
@@ -57,9 +54,8 @@ describe("About Objects (about_objects.js)", function() {
       keys.push(propertyName);
       values.push(person[propertyName]);
     }
-    // what are the property names of the object?
-    expect(keys).toEqual([ FILL_ME_IN, FILL_ME_IN, FILL_ME_IN]);
-    // what are the property values of the object?
-    expect(values).toEqual([ FILL_ME_IN, FILL_ME_IN, FILL_ME_IN]);
+    // The property names and values should match the expected arrays.
+    expect(keys).toEqual(["name", "age", "unemployed"]);
+    expect(values).toEqual(["Amory Blaine", 102, true]);
   });
 });

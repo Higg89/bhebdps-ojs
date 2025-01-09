@@ -2,25 +2,25 @@ describe("About Scope (about_scope.js)", function() {
   thisIsAGlobalVariable = 77;
 
   it("global variables", function() {
-    // is thisIsAGlobalVariable defined in this scope?
-    expect(FILL_ME_IN).toBe(thisIsAGlobalVariable);
+    // Глобальная переменная thisIsAGlobalVariable доступна в этой области видимости
+    expect(77).toBe(thisIsAGlobalVariable);
   });
 
   it("variables declared inside of a function", function() {
     let outerVariable = "outer";
 
-    // this is a self-invoking function. Notice that it calls itself at the end ().
+    // Самовызывающаяся функция
     (function() {
       let innerVariable = "inner";
-      // is outerVariable defined in this scope?
-      expect(FILL_ME_IN).toBe(outerVariable);
-      // is innerVariable defined in this scope?
-      expect(FILL_ME_IN).toBe(innerVariable);
+      // outerVariable доступна из внешней области видимости
+      expect("outer").toBe(outerVariable);
+      // innerVariable определена только в этой функции
+      expect("inner").toBe(innerVariable);
     })();
 
-    // is outerVariable defined in this scope?
-    expect(FILL_ME_IN).toBe(outerVariable);
-    // is innerVariable defined in this scope?
-    expect(FILL_ME_IN).toBe(typeof(innerVariable));
+    // outerVariable доступна в текущей области видимости
+    expect("outer").toBe(outerVariable);
+    // innerVariable недоступна за пределами функции
+    expect("undefined").toBe(typeof(innerVariable));
   });
 });

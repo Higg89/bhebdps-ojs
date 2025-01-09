@@ -3,22 +3,22 @@ describe("About Mutability (about_mutability.js)", function() {
     let aPerson = { firstname: "John", lastname: "Smith" };
     aPerson.firstname = "Alan";
 
-    expect(aPerson.firstname).toBe(FILL_ME_IN);
+    expect(aPerson.firstname).toBe("Alan");
   });
 
   it("should understand that constructed properties are public and mutable", function () {
-    function Person(firstname, lastname){
+    function Person(firstname, lastname) {
       this.firstname = firstname;
       this.lastname = lastname;
     }
     let aPerson = new Person("John", "Smith");
     aPerson.firstname = "Alan";
 
-    expect(aPerson.firstname).toBe(FILL_ME_IN);
+    expect(aPerson.firstname).toBe("Alan");
   });
   
   it("should expect prototype properties to be public and mutable", function () {
-    function Person(firstname, lastname){
+    function Person(firstname, lastname) {
       this.firstname = firstname;
       this.lastname = lastname;
     }
@@ -27,17 +27,17 @@ describe("About Mutability (about_mutability.js)", function() {
     };
   
     let aPerson = new Person("John", "Smith");
-    expect(aPerson.getFullName()).toBe(FILL_ME_IN);
+    expect(aPerson.getFullName()).toBe("John Smith");
   
     aPerson.getFullName = function () {
       return this.lastname + ", " + this.firstname;
     };
   
-    expect(aPerson.getFullName()).toBe(FILL_ME_IN);
+    expect(aPerson.getFullName()).toBe("Smith, John");
   });
   
   it("should know that variables inside a constructor and constructor args are private", function () {
-    function Person(firstname, lastname){
+    function Person(firstname, lastname) {
       let fullName = firstname + " " + lastname;
   
       this.getFirstName = function () { return firstname; };
@@ -50,14 +50,14 @@ describe("About Mutability (about_mutability.js)", function() {
     aPerson.lastname = "Andrews";
     aPerson.fullName = "Penny Andrews";
   
-    expect(aPerson.getFirstName()).toBe(FILL_ME_IN);
-    expect(aPerson.getLastName()).toBe(FILL_ME_IN);
-    expect(aPerson.getFullName()).toBe(FILL_ME_IN);
+    expect(aPerson.getFirstName()).toBe("John"); // firstname внутри конструктора остается "John"
+    expect(aPerson.getLastName()).toBe("Smith"); // lastname внутри конструктора остается "Smith"
+    expect(aPerson.getFullName()).toBe("John Smith"); // fullName внутри конструктора остается "John Smith"
 
     aPerson.getFullName = function () {
       return aPerson.lastname + ", " + aPerson.firstname;
     };
 
-    expect(aPerson.getFullName()).toBe(FILL_ME_IN);
+    expect(aPerson.getFullName()).toBe("Andrews, Penny"); // Новый метод использует публичные свойства
   });
 });
